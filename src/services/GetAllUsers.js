@@ -19,9 +19,28 @@ export async function GetAllUsers(){
 export async function GetUserById(id){
     console.log(url+'/'+id.toString())
     let response = await fetch(url+'/'+id.toString())
+    console.log(response)
     let user = await response.json()
     console.log(user)
     return user
 }
 
-// export async function
+export async function addUser(user) {
+    console.log(JSON.stringify(user))
+    console.log('we are here 1')
+    let response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    console.log(response)
+    console.log('we are here 2')
+    let newUser = await response.json();
+    console.log('we are here')
+    console.log(newUser);
+
+    return newUser;
+  }

@@ -9,6 +9,7 @@ import UserId from './component/UserId'
 
 import { GetAllUsers } from './services/GetAllUsers';
 import UsersList from './component/UsersList';
+import AddUser from './component/AddUser';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/user' element={<User/>}/>
         <Route path='/usersList' element={<UsersList/>}/>
         <Route path='/userId' element={<UserId/>}/>
+        <Route path='/addUser' element={<AddUser/>}/>
       </Routes>
     </div>
   );

@@ -22,7 +22,7 @@ export default function User() {
             </NavLink>
           </div>
           <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
-            <NavLink className='nav-links'  to='/getAllUsers'>
+            <NavLink className='nav-links'  to='/addUser'>
               <h3>Add an User</h3>
               <p>Click to enroll a new credit card user</p>
             </NavLink>
@@ -36,7 +36,7 @@ export default function User() {
             </NavLink>
           </div>
           <div class="col-lg-6 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">  
-            <NavLink className='nav-links' to='/getAllUsers'>
+            <NavLink className='nav-links' to='/deleteUser'>
               <h3>Delete an User</h3>
               <p>Click to delete any credit card user</p>
             </NavLink>
