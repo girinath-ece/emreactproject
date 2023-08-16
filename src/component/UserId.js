@@ -4,48 +4,20 @@ import { GetUserById } from '../services/GetAllUsers'
 import { useParams } from 'react-router-dom'
 
 export default function UserId() {
-    let {id} = useParams()
-    const [user, setuser] = useState([])
 
-    useEffect(() => {
-    //   GetUserById(Number(id))
-    //   .then(user=>setuser(user))
-    }, [])
+    const [user, setuser] = useState({})
+    const [id,setid] = useState({})
+    const handleChange = (event)=>{
+        setid(event.target.value)
+    }
     
     const fetchUser=()=>{
-        // GetUserById(Number(id))
-        // .then(user=>setuser(user))
-        // {
-            document.getElementById('output').innerHTML = "Heading"
-            // <>
-            // <tbody>
-            //     <tr>
-            //         <th>Customer ID</th>
-            //         {/* <td>{user.customerId}</td> */}
-            //     </tr>
-            //     <tr>
-            //         <th>First Name</th>
-            //         {/* <td>{user.first}</td> */}
-            //     </tr>
-            //     <tr>
-            //         <th>Last Name</th>
-            //         {/* <td>{user.last}</td> */}
-            //     </tr>
-            //     <tr>
-            //         <th>Gender</th>
-            //         {/* <td>{user.gender}</td> */}
-            //     </tr>
-            //     <tr>
-            //         <th>Job</th>
-            //         {/* <td>{user.job}</td> */}
-            //     </tr>
-            //     <tr>
-            //         <th>Date of Birth (YYYY-MM-DD)</th>
-            //         {/* <td>{user.dob.subString(0,10)}</td> */}
-            //     </tr>
-            // </tbody>
-            // </>
-        // }
+        GetUserById(Number(id))
+        .then(user=>setuser(user))
+        .then(console.log(user))
+        {
+            document.getElementById('output').innerHTML =  JSON.stringify(user)
+        }
     }
 
   return (
@@ -57,7 +29,7 @@ export default function UserId() {
                 <td className='td'>
                     <div className="col-12">
                         <input type="number" className="form-control" 
-                        name='id' placeholder="Enter Customer ID" />
+                        name={id} onChange={handleChange} placeholder="Enter Customer ID" />
                     </div>
                 </td>
                 <td className='td'>
@@ -67,6 +39,7 @@ export default function UserId() {
                 </td>
                 </tr>
             </table>
+            
             <div id='output'></div>
     </div>
   )

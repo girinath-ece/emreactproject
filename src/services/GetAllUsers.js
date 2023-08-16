@@ -17,8 +17,10 @@ export async function GetAllUsers(){
 }
 
 export async function GetUserById(id){
-    let response = await fetch('${url}/${id}')
+    console.log(url+'/'+id.toString())
+    let response = await fetch(url+'/'+id.toString())
     let user = await response.json()
+    console.log(user)
     return user
 }
 
