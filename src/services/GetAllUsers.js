@@ -10,9 +10,7 @@ export async function GetAllUsers(){
 export async function GetUserById(id){
     console.log(url+'/'+id.toString())
     let response = await fetch(url+'/'+id.toString())
-    console.log(response)
     let user = await response.json()
-    console.log(user)
     return user
 }
 
@@ -45,5 +43,5 @@ export async function deleteUser(id){
 }
 
 export async function updateUser(id){
-  
+    
 }

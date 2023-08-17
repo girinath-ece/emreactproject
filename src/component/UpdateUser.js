@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { updateUser, GetUserById } from '../services/GetAllUsers'
+import { deleteUser,addUser, GetUserById } from '../services/GetAllUsers'
 import { useNavigate } from 'react-router-dom';
 import './UpdateUser.css'
 
@@ -19,17 +19,28 @@ export default function UpdateUser() {
         setuser(newUser)
     }
 
-    const updUser = () =>{
-        updateUser(Number(id)).then(res=>navigate('/usersList'))
+
+    const nextStep = () =>{
+        addUser(user)
         alert('User with customer ID '+id.toString()+' updated.')
+        navigate('/usersList')
+    }
+    const updUser = () =>{
+        deleteUser(Number(id))
+        nextStep();
     }
 
     const fetchUser=()=>{
         GetUserById(Number(id))
-        .then(user=>setuser(user))
-        {
-            document.getElementById('output').innerHTML =  JSON.stringify(user)
-        }
+        .then(user=>setuser(user[0]))
+
+        if(user.gender=='M')
+            document.getElementById('genderM').checked = true;
+        else
+            document.getElementById('genderF').checked = true;
+
+        let date_value = (user.dob).substring(0,10)
+        document.getElementById('dat').value = date_value.toString();
     }
 
   return (
@@ -55,30 +66,34 @@ export default function UpdateUser() {
         </table>
         <form onSubmit={updUser}>
         <div className="m-3">
-            <div className="mb-4">
+        <div className="mb-4">
+                <label className='lab'> First Name </label>
                 <input type="text" className="form-control" 
                 name='first' value={user.first} onChange={handleChangeUser}
                 placeholder="First Name" />
             </div>
             <div className="mb-4">
+                <label  className='lab'>Last Name</label>
                 <input type="text" className="form-control" 
                 name='last' value={user.last} onChange={handleChangeUser}
                 placeholder="Last Name" />
             </div>
             <div className="mb-4">
-                <input type="text" className="form-control" 
-                name='gender' value={user.gender} onChange={handleChangeUser}
-                placeholder="Gender" />
+                <label  className='lab'>Gender</label>
+                <input id="genderM" type="radio" name='gender' value={user.gender} onChange={handleChangeUser}/>
+                <label id="male" for="genderM">Male</label>
+                <input id="genderF" type="radio" name='gender' value={user.gender} onChange={handleChangeUser}/>
+                <label for="genderF">Female</label>
             </div>
             <div className="mb-4">
+                <label  className='lab'>Job</label>
                 <input type="text" className="form-control" 
                 name='job' value={user.job} onChange={handleChangeUser}
                 placeholder="Job" />
             </div>
             <div className="mb-4">
-                <input type="text" className="form-control" 
-                name='dob' value={user.dob} onChange={handleChangeUser}
-                placeholder="Date of Birth (YYYY-MM-DD)" />
+                <label  className='lab'>Date of Birth</label>
+                <input id='dat' type="date"  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name='dob' onChange={handleChangeUser} />
             </div>
             <div className="col-12">
                 <button type="submit" className="btn btn-primary" >Update</button>
@@ -86,7 +101,7 @@ export default function UpdateUser() {
         </div>
         
         </form>
-        
+        <div id='output'></div>
     </div>
   )
 }

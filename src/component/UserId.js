@@ -13,10 +13,11 @@ export default function UserId() {
     
     const fetchUser=()=>{
         GetUserById(Number(id))
-        .then(user=>setuser(user))
+        .then(user=>setuser(user[0]))
         .then(console.log(user))
         {
-            document.getElementById('output').innerHTML =  JSON.stringify(user)
+            // document.getElementById('output').innerHTML =  JSON.stringify(user)
+            // document.getElementById('')
         }
     }
 
@@ -39,8 +40,28 @@ export default function UserId() {
                 </td>
                 </tr>
             </table>
-            
-            <div id='output'></div>
+            <br>
+            </br>
+            <tbody>
+                <tr className='tableHead'>
+                    <th className='th'>Customer ID</th>
+                    <th className='th'>First Name</th>
+                    <th className='th'>Last Name</th>
+                    <th className='th'>Gender</th>
+                    <th className='th'>Job</th>
+                    <th className='th'>Date of Birth (YYYY-MM-DD)</th>
+                </tr>
+               
+                <tr>
+                    <td id='tb1'>{user.customerId}</td>
+                    <td id='tb2'>{user.first}</td>
+                    <td id='tb3'>{user.last}</td>
+                    <td id='tb4'>{user.gender}</td>
+                    <td id='tb5'>{user.job}</td>
+                    <td id='tb6'>{user.dob}</td>
+                </tr>
+                   
+            </tbody>
     </div>
   )
 }
