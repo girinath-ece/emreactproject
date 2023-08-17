@@ -11,6 +11,7 @@ export default function NavBar() {
             <div className='collapse navbar-collapse'>
                 <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                     <li className='nav-item'><NavLink className='nav-link' to='/user'>Credit Card</NavLink></li>
+                    <li className='nav-item'><NavLink className='nav-link' to='/transactions'>Transactions</NavLink></li>
                     <li className='nav-item'><NavLink className='nav-link' to='/about'>About Us</NavLink></li>
                 </ul>
             </div>

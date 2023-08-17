@@ -30,7 +30,7 @@ export default function User() {
         </div>
         <div className='row gy-6'>
           <div class="col-lg-6 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
-            <NavLink className='nav-links'  to='/getAllUsers'>
+            <NavLink className='nav-links'  to='/updateUser'>
               <h3>Update an User</h3>
               <p>Click to update any credit card user</p>
             </NavLink>

@@ -1,14 +1,5 @@
 let url = 'http://localhost:8080/creditcard'
 
-// export function GetAllUsers(){
-//     fetch(url)
-//     .then(data=>data.json())
-//     .then(users=>{
-//         JSON.stringify(users)
-//         return users;
-//     })
-    
-// }
 
 export async function GetAllUsers(){
     let response = await fetch(url);
@@ -37,10 +28,22 @@ export async function addUser(user) {
     });
     
     console.log(response)
-    console.log('we are here 2')
     let newUser = await response.json();
-    console.log('we are here')
     console.log(newUser);
 
     return newUser;
   }
+
+
+
+export async function deleteUser(id){
+  let response = await fetch(url+'/'+id.toString(),{
+    method:"DELETE"
+  });
+  let data= await response.json();
+  return data;
+}
+
+export async function updateUser(id){
+  
+}
